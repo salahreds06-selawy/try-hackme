@@ -1,0 +1,117 @@
+# TryHackMe - AI Threat Modelling Assessment Writeup
+
+## Room Overview
+**Room Name:** AI Threat Modelling Assessment  
+**Difficulty:** Easy  
+**Category:** AI Security, Threat Modelling  
+**Target:** Interactive web application  
+**Date Completed:** September 27, 2026  
+**Tools Used:** Web Browser
+
+---
+
+## 1. Introduction
+
+This room is an interactive assessment that tests your ability to identify and mitigate threats against AI systems. It is divided into phases, each presenting a specific attack scenario. Your task is to place "shields" on the correct components to defend against the attack.
+
+The room covers modern AI-specific threats such as **Prompt Injection**, **Sensitive Data Leakage**, and **Data Poisoning**.
+
+---
+
+## 2. Phase 2 – Attack Simulation
+
+### 2.1 Prompt Injection
+
+**Attack Description:**  
+An attacker attempts to inject malicious instructions into the AI's prompt to bypass security controls.
+
+**Initial Mistake:**  
+I initially placed shields on `User Input` and `LLM Agent`, but the system was still compromised. The error message explained that the prompt injection bypassed defenses because the instructions were processed elsewhere.
+
+**Correct Defense:**  
+I placed shields on:
+- `Prompt` – the component where instructions are assembled.
+- `LLM Agent` – the component that executes instructions.
+
+**Result:** Attack mitigated.
+
+---
+
+### 2.2 Sensitive Data Leakage
+
+**Attack Description:**  
+An attacker tries to extract sensitive information from the database through the AI's responses.
+
+**Correct Defense:**  
+I placed shields on:
+- `Database` – to protect the data at rest.
+- `Retrieval` – to prevent unauthorized data fetching.
+- `LLM Agent` – to prevent leaking data in responses.
+
+**Result:** Attack mitigated.
+
+---
+
+### 2.3 Data Poisoning
+
+**Attack Description:**  
+An attacker injects false or malicious data into the database to corrupt the AI's knowledge base.
+
+**Correct Defense:**  
+I placed shields on:
+- `Database` – to prevent unauthorized writes.
+- `Retrieval` – to ensure only trusted data is fetched.
+
+**Result:** Attack mitigated.
+
+---
+
+## 3. Completion
+
+After successfully defending against all scenarios, the room was marked as complete. The assessment demonstrates the importance of securing every layer of an AI system, from input to retrieval to output.
+
+---
+
+## 4. Mistakes & Challenges Faced
+
+1. **Misunderstanding Prompt Injection:**  
+   I initially protected the wrong components. I learned that the `Prompt` assembly point is a critical defense layer.
+
+2. **Overlooking the Retrieval layer:**  
+   For data leakage and poisoning, I initially focused only on the database. The retrieval component is equally important.
+
+3. **Internet connectivity:**  
+   The interactive application loaded slowly at times due to a weak connection.
+
+---
+
+## 5. What I Learned
+
+- **AI Threat Landscape:** Understanding Prompt Injection, Data Leakage, and Data Poisoning.
+- **Defense in Depth:** Securing multiple layers of an AI system.
+- **Component-Level Security:** Identifying which component is responsible for which function.
+- **Threat Modelling:** Thinking like an attacker to design better defenses.
+
+---
+
+## 6. Recommendations for Defense
+
+- **Input Sanitization:** Filter and validate all user inputs.
+- **Prompt Hardening:** Isolate prompt assembly and enforce strict templates.
+- **Access Control:** Restrict database read/write permissions.
+- **Data Validation:** Verify retrieved data before passing it to the LLM.
+- **Output Filtering:** Scan AI responses for sensitive information before returning them.
+- **Monitoring:** Log and alert on unusual AI interactions.
+
+---
+
+## 7. References
+
+- [TryHackMe AI Threat Modelling Assessment](https://tryhackme.com/room/aithreatmodellingassessment)
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+
+---
+**Written by:** Salah Eddin Essbihi  
+**LinkedIn:** [salah-eddin-essbihi](https://www.linkedin.com/in/salah-eddin-essbihi-911b0443a)  
+**TryHackMe:** [cyber.salah.sec](https://tryhackme.com/p/cyber.salah.sec)  
+**GitHub:** [salahreds06-selawy](https://github.com/salahreds06-selawy)
